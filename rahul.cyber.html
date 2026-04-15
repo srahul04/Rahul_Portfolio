@@ -1,0 +1,1021 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rahul S | Cyber Security & Software Portfolio</title>
+    <meta name="description" content="Portfolio of Rahul S, Computer Science Engineer - Cyber Security & Software Developer.">
+    <meta name="theme-color" content="#030305">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        /* === CORE VARIABLES === */
+        :root {
+            --bg-color: #030305;
+            --secondary-bg: rgba(20, 20, 25, 0.4); 
+            --neon-cyan: #00f3ff;
+            --neon-green: #00ff66;
+            --neon-purple: #bc13fe;
+            --text-main: #e0e0e0;
+            --text-muted: #bbb;
+            --font-primary: 'Inter', sans-serif;
+            --font-heading: 'Orbitron', sans-serif;
+            --shadow-cyan: 0 0 15px rgba(0, 243, 255, 0.4);
+        }
+
+        /* === RESET & BASE === */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            font-family: var(--font-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Scrollbar */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: var(--bg-color); }
+        ::-webkit-scrollbar-thumb { background: var(--neon-cyan); border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: var(--neon-purple); }
+
+        /* Progress Bar Strip */
+        #scroll-progress {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 4px;
+            background: var(--neon-cyan);
+            z-index: 9999;
+            width: 0%;
+            box-shadow: 0 0 15px var(--neon-cyan);
+            transition: width 0.1s;
+        }
+
+        /* Typography */
+        h1, h2, h3, h4, .nav-logo {
+            font-family: var(--font-heading);
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+        
+        .text-cyan { color: var(--neon-cyan); text-shadow: 0 0 10px rgba(0,243,255,0.4); }
+        .text-green { color: var(--neon-green); text-shadow: 0 0 10px rgba(0,255,102,0.4); }
+        .text-purple { color: var(--neon-purple); text-shadow: 0 0 10px rgba(188,19,254,0.4); }
+
+        /* === BACKGROUND & 3D CANVAS === */
+        #canvas-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: -2;
+            pointer-events: auto; /* Allows interaction */
+        }
+        
+        .fx-grid {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                linear-gradient(rgba(0, 243, 255, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 243, 255, 0.03) 1px, transparent 1px);
+            background-size: 50px 50px;
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        /* === LOADER === */
+        #loader {
+            position: fixed;
+            top: 0; left: 0; width: 100vw; height: 100vh;
+            background: var(--bg-color);
+            z-index: 10000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: opacity 0.5s ease-out;
+        }
+        .terminal-loader {
+            font-family: 'Courier New', Courier, monospace;
+            color: var(--neon-green);
+            background: rgba(0,0,0,0.8);
+            padding: 2rem;
+            border: 1px solid var(--neon-green);
+            box-shadow: 0 0 20px rgba(0,255,102,0.2);
+            max-width: 450px;
+            width: 90%;
+        }
+        .loader-text { margin-bottom: 1rem; line-height: 1.8; }
+        .progress-wrapper { width: 100%; height: 2px; background: rgba(0,255,102,0.2); position: relative;}
+        .progress-bar { height: 100%; width: 0; background: var(--neon-green); box-shadow: 0 0 10px var(--neon-green); transition: width 0.1s;}
+
+        /* === NAVIGATION === */
+        #navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 5%;
+            background: rgba(3, 3, 5, 0.6);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(0, 243, 255, 0.2);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 100;
+            transition: all 0.3s ease;
+        }
+        .nav-logo { font-size: 1.5rem; color: var(--neon-cyan); text-decoration: none; font-weight: 900; }
+        
+        .nav-links { display: flex; align-items: center; }
+        
+        /* Nav Links Advanced Animation */
+        .nav-links a {
+            color: #fff;
+            text-decoration: none;
+            margin: 0 1rem;
+            font-size: 0.9rem;
+            font-family: var(--font-heading);
+            transition: color 0.3s, text-shadow 0.3s, transform 0.3s;
+            position: relative;
+            padding-bottom: 5px;
+            opacity: 0;
+            animation: navDropIn 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+        }
+        .nav-links a:nth-child(1) { animation-delay: 0.1s; }
+        .nav-links a:nth-child(2) { animation-delay: 0.2s; }
+        .nav-links a:nth-child(3) { animation-delay: 0.3s; }
+        .nav-links a:nth-child(4) { animation-delay: 0.4s; }
+        .nav-links a:nth-child(5) { animation-delay: 0.5s; }
+        
+        @keyframes navDropIn {
+            0% { opacity: 0; transform: translateY(-30px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+
+        .nav-links a::after {
+            content: ''; position: absolute; width: 0; height: 2px; bottom: 0; left: 0;
+            background-color: var(--neon-cyan); transition: width 0.3s ease; box-shadow: 0 0 8px var(--neon-cyan);
+        }
+        .nav-links a:hover::after { width: 100%; }
+        .nav-links a:hover { color: var(--neon-cyan); text-shadow: 0 0 8px var(--neon-cyan); transform: translateY(-3px); }
+        
+        .btn-download {
+            border: 1px solid var(--neon-green);
+            color: var(--neon-green) !important;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            margin-left: 1rem !important;
+            transition: all 0.3s !important;
+            background: rgba(0,255,102,0.05);
+            animation-delay: 0.6s !important; 
+        }
+        .btn-download:hover {
+            background: var(--neon-green);
+            color: var(--bg-color) !important;
+            box-shadow: 0 0 15px var(--neon-green);
+            text-shadow: none !important;
+        }
+
+        .nav-cta {
+            color: var(--bg-color);
+            background: var(--neon-cyan);
+            padding: 0.6rem 1.2rem;
+            text-decoration: none;
+            font-family: var(--font-heading);
+            font-size: 0.8rem;
+            border-radius: 4px;
+            transition: all 0.3s;
+            box-shadow: var(--shadow-cyan);
+            opacity: 0;
+            animation: navDropIn 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+            animation-delay: 0.7s;
+        }
+        .nav-cta:hover { transform: scale(1.05); box-shadow: 0 0 25px rgba(0, 243, 255, 0.8); }
+
+        /* === SECTIONS === */
+        section {
+            padding: 5rem 5% 2rem; 
+            position: relative;
+            z-index: 10;
+        }
+        
+        /* Transparent overlay for sections so 3D background is readable but fully visible to the end */
+        .content-section {
+            background: rgba(3, 3, 5, 0.1); 
+            backdrop-filter: blur(8px);
+            min-height: 100vh;
+        }
+
+        /* === HERO SECTION === */
+        #hero {
+            display: flex;
+            align-items: center;
+            min-height: 100vh;
+            pointer-events: none; /* Let clicks pass through to 3D Background */
+            padding-top: 5rem;
+            background: transparent;
+        }
+        .hero-content {
+            max-width: 800px;
+            pointer-events: auto; /* Enable interaction for buttons inside hero */
+            background: rgba(3, 3, 5, 0.3);
+            padding: 2.5rem;
+            border-radius: 12px;
+            border-left: 4px solid var(--neon-cyan);
+            backdrop-filter: blur(15px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            animation: fadeIn 2s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .hero-title { font-size: 4rem; margin-bottom: 0.5rem; line-height: 1.1; color: #fff;}
+        .hero-subtitle { font-size: 1.5rem; margin-bottom: 1.5rem; }
+        .hero-desc { font-size: 1.1rem; color: var(--text-muted); margin-bottom: 2rem; line-height: 1.6;}
+        
+        .btn-group { display: flex; gap: 1rem; }
+        .btn {
+            padding: 0.8rem 1.5rem;
+            font-family: var(--font-heading);
+            font-size: 0.9rem;
+            text-decoration: none;
+            border-radius: 4px;
+            transition: all 0.3s;
+            text-transform: uppercase;
+            cursor: pointer;
+        }
+        .btn-primary { background: transparent; border: 1px solid var(--neon-cyan); color: var(--neon-cyan); box-shadow: inset 0 0 10px rgba(0,243,255,0.2); }
+        .btn-primary:hover { background: var(--neon-cyan); color: var(--bg-color); box-shadow: 0 0 20px var(--neon-cyan); }
+        .btn-secondary { background: transparent; border: 1px solid var(--neon-green); color: var(--neon-green);  }
+        .btn-secondary:hover { background: var(--neon-green); color: var(--bg-color); box-shadow: 0 0 20px var(--neon-green); }
+
+        /* === GLOBAL SECTION LAYOUTS === */
+        .section-label { 
+            font-family: var(--font-heading); color: #888; font-size: 0.8rem; letter-spacing: 2px; 
+            margin-bottom: 0.5rem; display: inline-block; border-bottom: 1px dashed #666; padding-bottom: 2px;
+        }
+        .section-title { font-size: 2.5rem; margin-bottom: 2rem; color: #fff;}
+
+        .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 2.5rem; }
+        /* Auto grids default min width altered for larger certifications */
+        .grid-auto { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; }
+        .grid-certs { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2rem; }
+
+        /* === CARDS === */
+        .glass-card {
+            background: var(--secondary-bg);
+            border: 1px solid rgba(255,255,255,0.1);
+            padding: 2rem;
+            border-radius: 12px;
+            transition: transform 0.4s, border-color 0.4s, box-shadow 0.4s, background 0.4s;
+            backdrop-filter: blur(10px);
+        }
+        .glass-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--neon-cyan);
+            box-shadow: 0 15px 30px rgba(0, 243, 255, 0.15);
+            background: rgba(30, 30, 40, 0.8);
+        }
+
+        .stat-num { font-family: var(--font-heading); font-size: 3rem; color: var(--neon-cyan); margin-bottom: 0.5rem; line-height: 1;}
+        .stat-label { font-size: 0.95rem; color: var(--text-muted); }
+
+        /* Timeline */
+        .timeline { border-left: 2px solid var(--neon-cyan); padding-left: 2rem; margin-left: 1rem;}
+        .timeline-item { margin-bottom: 2.5rem; position: relative; }
+        .timeline-item::before { 
+            content: ''; position: absolute; left: -2.65rem; top: 0.2rem; width: 1.2rem; height: 1.2rem; 
+            background: var(--bg-color); border: 2px solid var(--neon-cyan); border-radius: 50%; box-shadow: 0 0 10px var(--neon-cyan); 
+            transition: background 0.3s;
+        }
+        .timeline-item:hover::before { background: var(--neon-cyan); }
+        .timeline-date { font-family: var(--font-heading); color: var(--text-muted); font-size: 0.85rem; margin-bottom: 0.5rem; }
+        .timeline-title { font-size: 1.3rem; margin-bottom: 0.3rem;}
+        .timeline-org { color: #fff; font-weight: 600; margin-bottom: 0.5rem;}
+        .timeline-meta { font-size: 0.9rem; color: var(--neon-green); }
+
+        /* Tech Tags */
+        .tech-tags { display: flex; flex-wrap: wrap; gap: 0.6rem; margin-top: 1rem;}
+        .tech-tag { 
+            background: rgba(0, 243, 255, 0.05); color: var(--neon-cyan); 
+            padding: 0.3rem 0.8rem; border-radius: 4px; font-size: 0.8rem; 
+            border: 1px solid rgba(0,243,255,0.2); font-family: var(--font-heading);
+            letter-spacing: 1px;
+        }
+
+        /* Slideshow Setup */
+        .slideshow-container { position: relative; width: 100%; height: 100%; min-height: 250px; border-radius: 12px; overflow: hidden; background: #000; border: 1px solid rgba(255,255,255,0.1); }
+        
+        /* Updated slideshow to object-fit: contain to show the entire 100% of the image perfectly */
+        .taiwan-slide {
+            position: absolute; top:0; left:0; width: 100%; height: 100%; object-fit: contain;
+            opacity: 0; transition: opacity 0.5s ease-in-out;
+        }
+        .taiwan-slide.active { opacity: 1; }
+
+        /* Projects & Pubs specific */
+        .project-card h3 { font-size: 1.4rem; margin-bottom: 1rem; color: #fff; }
+        .project-desc { color: var(--text-muted); font-size: 0.95rem; margin-bottom: 1.5rem; }
+        
+        .pub-link { text-decoration: none; color: inherit; display: block;} 
+        .pub-year { font-family: var(--font-heading); font-size: 0.9rem; color: var(--neon-purple); margin-bottom: 0.5rem; }
+        .pub-item:hover { border-color: var(--neon-purple); box-shadow: 0 10px 20px rgba(188,19,254,0.15); cursor: pointer; }
+
+        /* === CONTACT SECTION === */
+        .contact-wrapper { display: flex; flex-direction: column; align-items: center; text-align: left; }
+        .contact-card {
+            background: var(--secondary-bg);
+            padding: 3rem; width: 100%; max-width: 700px;
+            border-radius: 12px; border: 1px solid var(--neon-cyan);
+            box-shadow: 0 0 30px rgba(0, 243, 255, 0.05);
+            display: flex; flex-direction: column; gap: 2rem;
+        }
+        
+        .contact-text-item { 
+            display: flex; justify-content: space-between; align-items: center; 
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1); padding-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+        .contact-text-item span { font-family: var(--font-heading); color: var(--text-muted); }
+        .contact-text-item a { color: var(--neon-cyan); text-decoration: none; transition: all 0.3s; font-family: var(--font-primary); font-weight: 600;}
+        .contact-text-item a:hover { color: var(--neon-green); text-shadow: 0 0 10px var(--neon-green); }
+
+        .contact-icon-row { display: flex; justify-content: center; gap: 2rem; margin-top: 1rem; }
+        .contact-icon-link {
+            display: flex; flex-direction: column; align-items: center;
+            text-decoration: none; color: var(--text-muted);
+            transition: all 0.3s; padding: 1.5rem; border-radius: 12px;
+            background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.05); min-width: 120px;
+        }
+        .contact-icon-link i { font-size: 3rem; margin-bottom: 1rem; color: #fff; transition: all 0.3s; }
+        .contact-icon-link span { font-family: var(--font-heading); font-size: 0.85rem; letter-spacing: 1px; }
+        
+        .contact-icon-link:hover {
+            border-color: var(--neon-purple); background: rgba(188, 19, 254, 0.05);
+            transform: translateY(-5px); color: var(--neon-purple); box-shadow: 0 10px 20px rgba(188, 19, 254, 0.1);
+        }
+        .contact-icon-link:hover i { color: var(--neon-purple); text-shadow: 0 0 15px var(--neon-purple); transform: scale(1.1); }
+
+        /* === FOOTER === */
+        footer { 
+            background: rgba(1, 1, 2, 0.9); border-top: 1px solid rgba(255,255,255,0.05); 
+            padding: 2rem 5%; display: flex; justify-content: space-between; align-items: center; 
+            backdrop-filter: blur(10px);
+        }
+        .footer-logo { font-family: var(--font-heading); color: #666;}
+        .footer-social a { color: var(--text-muted); text-decoration: none; margin-left: 1.5rem; transition: color 0.3s; font-family: var(--font-heading); font-size: 0.9rem; }
+        .footer-social a:hover { color: var(--neon-cyan); }
+
+        /* === ANIMATIONS === */
+        .reveal { opacity: 0; transform: translateY(25px); transition: all 0.8s ease-out; }
+        .reveal.active { opacity: 1; transform: translateY(0); }
+
+        .glitch { position: relative; }
+        .glitch::before, .glitch::after {
+            content: attr(data-text); position: absolute; top: 0; left: 0; width: 100%; height: 100%; opacity: 0.8;
+        }
+        .glitch::before { left: 2px; text-shadow: -1px 0 var(--neon-purple); clip: rect(44px, 450px, 56px, 0); animation: glitch-anim 5s infinite linear alternate-reverse; }
+        .glitch::after { left: -2px; text-shadow: -1px 0 var(--neon-cyan); clip: rect(44px, 450px, 56px, 0); animation: glitch-anim2 5s infinite linear alternate-reverse; }
+
+        @keyframes glitch-anim { 0% { clip: rect(27px, 9999px, 86px, 0); } 20% { clip: rect(10px, 9999px, 53px, 0); } 40% { clip: rect(80px, 9999px, 12px, 0); } 60% { clip: rect(55px, 9999px, 98px, 0); } 80% { clip: rect(3px, 9999px, 44px, 0); } 100% { clip: rect(98px, 9999px, 32px, 0); } }
+        @keyframes glitch-anim2 { 0% { clip: rect(81px, 9999px, 2px, 0); } 20% { clip: rect(18px, 9999px, 63px, 0); } 40% { clip: rect(59px, 9999px, 94px, 0); } 60% { clip: rect(23px, 9999px, 11px, 0); } 80% { clip: rect(76px, 9999px, 88px, 0); } 100% { clip: rect(45px, 9999px, 34px, 0); } }
+
+        @media (max-width: 900px) {
+            .grid-2 { grid-template-columns: 1fr; }
+            .hero-title { font-size: 3rem; }
+            .nav-links { display: none; } 
+            .contact-text-item { flex-direction: column; align-items: flex-start; gap: 0.5rem; }
+            .grid-certs { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Scroll Progress -->
+    <div id="scroll-progress"></div>
+
+    <!-- System Loader -->
+    <div id="loader">
+        <div class="terminal-loader">
+            <div class="loader-text" id="loader-term">
+                > Initializing boot sequence...<br>
+                > Loading Multi-dimensional Cyber Matrix...<br>
+                > Establishing secure connection...<br>
+                > Rendering assets...
+            </div>
+            <div class="progress-wrapper">
+                <div class="progress-bar" id="loader-bar"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Background Effects & 3D Canvas -->
+    <div class="fx-grid"></div>
+    <div id="canvas-container"></div>
+
+    <!-- Navigation -->
+    <nav id="navbar">
+        <a href="#hero" class="nav-logo glitch" data-text="RAHUL_S">RAHUL_S</a>
+        <div class="nav-links">
+            <a href="#about">01. About</a>
+            <a href="#skills">02. Stack</a>
+            <a href="#certifications">03. Certifications</a>
+            <a href="#projects">04. Projects</a>
+            <a href="#publications">05. Research</a>
+            <!-- Updated download button opening in new tab -->
+            <a href="Rahul_S_Resume_Dev.pdf" target="_blank" class="btn-download"><i class="fa-solid fa-file-pdf"></i> Download Resume</a>
+        </div>
+        <a href="#contact" class="nav-cta">Initialize_Contact</a>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="hero">
+        <div class="hero-content">
+            <div class="hero-eyebrow">SYSTEM.IDENTIFY_USER()</div>
+            <h1 class="hero-title glitch" data-text="Rahul S">Rahul S</h1>
+            <!-- Updated subtitles combining Cyber and Software Engineering -->
+            <h2 class="hero-subtitle text-cyan">Cyber Security Analyst & Software Developer</h2>
+            <p class="hero-desc">
+                Technically proficient and dedicated Computer Science student specializing in both Software Engineering and Cyber Security. 
+                Passionate about crafting scalable applications, deploying robust encryption, and building unbreachable digital solutions.
+            </p>
+            <div class="btn-group">
+                <a href="#projects" class="btn btn-primary">Execute_Projects</a>
+                <a href="#contact" class="btn btn-secondary">Connect</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Content Wrapper for readability -->
+    <div class="content-section">
+
+        <!-- About Section -->
+        <section id="about">
+            <div class="section-label">Module: 01.About</div>
+            <h2 class="section-title">Root Access<span class="text-green">.</span></h2>
+            
+            <div class="grid-2">
+                <div class="about-text glass-card reveal">
+                    <!-- Updated About Me reflecting both domains and updated Academy Name -->
+                    <p style="margin-bottom: 1rem;">
+                        I am <strong>Rahul S</strong>, a B.Tech Computer Science and Engineering student at <strong>Kalasalingam Academy of Research and Education</strong>, passionate about both <strong>Software Engineering</strong> and <strong>Cyber Security</strong>. My mission is to architect scalable applications, identify digital vulnerabilities, and build robust, post-quantum secure systems.
+                    </p>
+                    <p>
+                        From developing anti-remote disk imaging tools to securing web interactions via extensions, or building high-performance software architectures, I bridge the gap between theoretical computer science and applied system security. I believe in writing code that is not just highly functional and efficient, but strictly uncompromisable.
+                    </p>
+                </div>
+                
+                <div class="stats-container grid-2" style="gap: 1.5rem;">
+                    <div class="stat-box glass-card reveal">
+                        <div class="stat-num">8.18</div>
+                        <div class="stat-label">CGPA (Kalasalingam Academy)</div>
+                    </div>
+                    <div class="stat-box glass-card reveal" style="transition-delay: 0.1s;">
+                        <div class="stat-num text-green">4</div>
+                        <div class="stat-label">Research Publications</div>
+                    </div>
+                    <div class="stat-box glass-card reveal" style="transition-delay: 0.2s;">
+                        <div class="stat-num text-purple">4+</div>
+                        <div class="stat-label">Security Certifications</div>
+                    </div>
+                    <div class="stat-box glass-card reveal" style="transition-delay: 0.3s;">
+                        <div class="stat-num">12+</div>
+                        <div class="stat-label">Cyber Tools Mastered</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Global Exposure / Semester Exchange Section explicitly highlighted -->
+            <h3 class="text-purple" style="font-family: 'Orbitron'; font-size: 1.8rem; margin: 5rem 0 2rem;">Global Exposure <i class="fa-solid fa-earth-asia"></i></h3>
+            <div class="grid-2 reveal">
+               <div class="glass-card" style="border-left: 4px solid var(--neon-purple);">
+                   <h3 class="text-purple" style="font-size: 1.5rem; margin-bottom: 0.5rem;">Semester Exchange Program 🇹🇼</h3>
+                   <p class="timeline-org" style="font-size: 1.1rem; color: #fff;">National Chung Cheng University, Taiwan</p>
+                   <p class="text-muted" style="margin-bottom: 1rem; font-size: 0.9rem;">Sep 2024 - Jan 2025</p>
+                   <div class="tech-tag" style="display:inline-block; margin-bottom: 1rem; color:var(--neon-purple); border-color:var(--neon-purple);">Final Score: 87.0%</div>
+                   <p class="text-muted" style="line-height: 1.6;">Selected for a highly competitive and exclusive semester exchange program that enhanced my global perspective, facilitated cross-cultural collaboration, and accelerated my exposure to advanced technical research methodologies on an international level.</p>
+               </div>
+               
+               <div class="slideshow-container glass-card" style="padding: 0;">
+                   <!-- Slideshow images dynamically loaded from taiwan folder -->
+                   <img class="taiwan-slide active" src="taiwan/1.jpeg" alt="Taiwan 1">
+                   <img class="taiwan-slide" src="taiwan/2.jpeg" alt="Taiwan 2">
+                   <img class="taiwan-slide" src="taiwan/3.jpeg" alt="Taiwan 3">
+                   <img class="taiwan-slide" src="taiwan/4.jpeg" alt="Taiwan 4">
+                   <img class="taiwan-slide" src="taiwan/5.jpeg" alt="Taiwan 5">
+                   <img class="taiwan-slide" src="taiwan/6.jpeg" alt="Taiwan 6">
+               </div>
+            </div>
+
+            <!-- Education Timeline -->
+            <h3 class="text-cyan" style="font-family: 'Orbitron'; font-size: 1.8rem; margin: 4rem 0 2rem;">Academics_Log</h3>
+            <div class="timeline reveal">
+                <div class="timeline-item">
+                    <div class="timeline-date">Sep 2022 - May 2026</div>
+                    <h3 class="timeline-title text-green">B.Tech Computer Science & Engineering</h3>
+                    <p class="timeline-org">Kalasalingam Academy of Research and Education</p>
+                    <div class="timeline-meta">CGPA: 8.18 / 10.00</div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-date">2021 - 2022</div>
+                    <h3 class="timeline-title text-purple">XII Grade</h3>
+                    <p class="timeline-org">Minerva Public School, India</p>
+                    <div class="timeline-meta">Percentage: 72%</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Skills Section -->
+        <section id="skills">
+            <div class="section-label">Module: 02.Stack</div>
+            <h2 class="section-title">Technical Arsenal<span class="text-green">.</span></h2>
+
+            <h3 class="hero-subtitle text-cyan">> Software Dev & Core Tech</h3>
+            <div class="grid-auto reveal" style="margin-bottom: 4rem;">
+                <div class="glass-card">
+                    <h4 style="color: #fff; margin-bottom:0.5rem"><i class="fa-brands fa-python text-cyan"></i> Languages</h4>
+                    <p class="text-muted">Python, JavaScript, Java (Basics)</p>
+                </div>
+                <div class="glass-card">
+                    <h4 style="color: #fff; margin-bottom:0.5rem"><i class="fa-brands fa-react text-cyan"></i> Web Dev</h4>
+                    <p class="text-muted">React JS, Node JS, Tailwind CSS, PHP</p>
+                </div>
+                <div class="glass-card">
+                    <h4 style="color: #fff; margin-bottom:0.5rem"><i class="fa-solid fa-code-branch text-cyan"></i> Architecture & DS</h4>
+                    <p class="text-muted">Data Structures, Algorithms, REST APIs, Scalable Design</p>
+                </div>
+                <div class="glass-card">
+                    <h4 style="color: #fff; margin-bottom:0.5rem"><i class="fa-brands fa-aws text-cyan"></i> Infra & Deploy</h4>
+                    <p class="text-muted">AWS EC2, S3, Docker (Basics), Git, GitHub</p>
+                </div>
+            </div>
+
+            <h3 class="hero-subtitle text-green">> Cyber Security Tools</h3>
+            <div class="grid-auto reveal">
+                <div class="glass-card" style="border-top: 3px solid var(--neon-green)">
+                    <h4 class="text-green" style="margin-bottom:0.5rem"><i class="fa-solid fa-network-wired"></i> Network Analysis</h4>
+                    <p class="text-muted">Wireshark, Nmap, Snort / Suricata, Firewalls</p>
+                </div>
+                <div class="glass-card" style="border-top: 3px solid var(--neon-green)">
+                    <h4 class="text-green" style="margin-bottom:0.5rem"><i class="fa-solid fa-search"></i> Forensics</h4>
+                    <p class="text-muted">Autopsy, FTK Imager, Reverse Engineering</p>
+                </div>
+                <div class="glass-card" style="border-top: 3px solid var(--neon-green)">
+                    <h4 class="text-green" style="margin-bottom:0.5rem"><i class="fa-solid fa-shield-halved"></i> Offensive Sec</h4>
+                    <p class="text-muted">Metasploit, Burp Suite, John the Ripper</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Grand Certifications Section directly requested by User -->
+        <section id="certifications">
+            <div class="section-label">Module: 03.Certifications</div>
+            <h2 class="section-title">Verified Credentials<span class="text-purple">.</span></h2>
+            
+            <div class="grid-certs reveal">
+                <div class="glass-card" style="border-left: 4px solid var(--neon-purple); display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 3rem;">
+                    <i class="fa-solid fa-certificate text-purple" style="font-size: 4rem; margin-bottom: 1.5rem;"></i>
+                    <h3 class="text-purple" style="font-size: 1.5rem; margin-bottom: 0.5rem;">Cyber Security Fundamentals</h3>
+                    <p class="text-muted" style="font-size: 1.1rem; font-family: var(--font-heading); letter-spacing: 1px;">Teachnook</p>
+                </div>
+                
+                <div class="glass-card" style="border-left: 4px solid var(--neon-green); display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 3rem; transition-delay: 0.1s;">
+                    <i class="fa-solid fa-shield-halved text-green" style="font-size: 4rem; margin-bottom: 1.5rem;"></i>
+                    <h3 class="text-green" style="font-size: 1.5rem; margin-bottom: 0.5rem;">Cybersecurity Certification</h3>
+                    <p class="text-muted" style="font-size: 1.1rem; font-family: var(--font-heading); letter-spacing: 1px;">NPTEL</p>
+                </div>
+                
+                <div class="glass-card" style="border-left: 4px solid var(--neon-cyan); display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 3rem; transition-delay: 0.2s;">
+                    <i class="fa-brands fa-linux text-cyan" style="font-size: 4rem; margin-bottom: 1.5rem;"></i>
+                    <h3 class="text-cyan" style="font-size: 1.5rem; margin-bottom: 0.5rem;">Linux Platform Authorization</h3>
+                    <p class="text-muted" style="font-size: 1.1rem; font-family: var(--font-heading); letter-spacing: 1px;">LinkedIn Learning</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section id="projects">
+            <div class="section-label">Module: 04.Projects</div>
+            <h2 class="section-title">Executed Scripts<span class="text-cyan">.</span></h2>
+            
+            <div class="grid-auto reveal">
+                <div class="glass-card project-card">
+                    <div style="font-family: var(--font-heading); color: var(--text-muted); font-size:0.8rem; margin-bottom:1rem;">WEB SECURITY</div>
+                    <h3 class="text-cyan">Secu Browse</h3>
+                    <p class="project-desc">Built a Chrome extension for malware detection, ad blocking, and high-traffic alerts using Gemini API. Integrated real-time threat analysis.</p>
+                    <div class="tech-tags">
+                        <span class="tech-tag">JavaScript</span><span class="tech-tag">Gemini API</span>
+                    </div>
+                </div>
+
+                <div class="glass-card project-card">
+                    <div style="font-family: var(--font-heading); color: var(--text-muted); font-size:0.8rem; margin-bottom:1rem;">CRYPTOGRAPHY / SOFTWARE DEV</div>
+                    <h3 class="text-purple">Quantum-Resistant IAM</h3>
+                    <p class="project-desc">Built a quantum-resistant Identity and Access Management system robustly securing enterprise logic with post-quantum cryptography integration.</p>
+                    <div class="tech-tags">
+                        <span class="tech-tag">Post-Quantum</span><span class="tech-tag">Python</span><span class="tech-tag">Software Arch</span>
+                    </div>
+                </div>
+
+                <div class="glass-card project-card">
+                    <div style="font-family: var(--font-heading); color: var(--text-muted); font-size:0.8rem; margin-bottom:1rem;">FULL STACK PLATFORM</div>
+                    <h3 class="text-green">Secure File Management</h3>
+                    <p class="project-desc">Developed a scalable web-based file management application. Implemented secure user authentication, granular access control, and efficient handlers.</p>
+                    <div class="tech-tags">
+                        <span class="tech-tag">PHP</span><span class="tech-tag">MySQL</span><span class="tech-tag">Auth Logic</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Publications Section -->
+        <section id="publications">
+            <div class="section-label">Module: 05.Research</div>
+            <h2 class="section-title">Published Intel<span class="text-purple">.</span></h2>
+            
+            <div class="grid-2 reveal">
+                <a href="Publications/SecuBrowse RP.pdf" target="_blank" class="pub-link">
+                    <div class="glass-card pub-item">
+                        <div class="pub-year">Springer Conference <i class="fa-solid fa-arrow-up-right-from-square" style="font-size:0.8em; margin-left: 5px;"></i></div>
+                        <h3 style="color:#fff; margin-bottom: 0.5rem; font-size: 1.2rem;">SecuBrowse - A Unified Extension</h3>
+                        <p class="project-desc">A Chrome-based security extension for malware detection and ad blocking with real-time threat analysis mechanisms to enhance safe browsing.</p>
+                    </div>
+                </a>
+
+                <a href="Publications/Quantum RP.pdf" target="_blank" class="pub-link">
+                    <div class="glass-card pub-item">
+                        <div class="pub-year">IEEE Conference <i class="fa-solid fa-arrow-up-right-from-square" style="font-size:0.8em; margin-left: 5px;"></i></div>
+                        <h3 style="color:#fff; margin-bottom: 0.5rem; font-size: 1.2rem;">Quantum-Resistant IAM System</h3>
+                        <p class="project-desc">Designed a post-quantum cryptography based enterprise software IAM system integrating RBAC, MFA, and robust session management.</p>
+                    </div>
+                </a>
+
+                <a href="Publications/Ant Remote Disk Imaging RP.pdf" target="_blank" class="pub-link">
+                    <div class="glass-card pub-item">
+                        <div class="pub-year">IEEE Conference <i class="fa-solid fa-arrow-up-right-from-square" style="font-size:0.8em; margin-left: 5px;"></i></div>
+                        <h3 style="color:#fff; margin-bottom: 0.5rem; font-size: 1.2rem;">Anti-Remote Disk Imaging</h3>
+                        <p class="project-desc">Developed tool preventing unauthorized data duplication through code execution monitoring, port blocking, achieving 92% prevention rate.</p>
+                    </div>
+                </a>
+
+                <a href="Publications/Dynamic Website Authentication RP.pdf" target="_blank" class="pub-link">
+                    <div class="glass-card pub-item">
+                        <div class="pub-year">IEEE Conference <i class="fa-solid fa-arrow-up-right-from-square" style="font-size:0.8em; margin-left: 5px;"></i></div>
+                        <h3 style="color:#fff; margin-bottom: 0.5rem; font-size: 1.2rem;">Website Authenticator</h3>
+                        <p class="project-desc">Engineered a Dynamic Website Authentication System using TOTP technology that enables real-time verification mapping against phishing.</p>
+                    </div>
+                </a>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact">
+            <div class="contact-wrapper reveal">
+                <div class="section-label">Module: 06.Connection</div>
+                <h2 class="section-title glitch" data-text="Open Connection" style="margin-bottom: 1rem;">Open Connection</h2>
+                <p class="hero-desc" style="margin: 0 auto 2rem; text-align: center;">
+                    System wide perimeter secured. Ready for a secure handshake.
+                </p>
+                
+                <div class="contact-card">
+                    <!-- Standard text based for email and phone per user request -->
+                    <div class="contact-text-item">
+                        <span>Mail_Protocol:</span>
+                        <a href="mailto:rahulklu07@gmail.com">rahulklu07@gmail.com</a>
+                    </div>
+                    <div class="contact-text-item" style="border-bottom: none;">
+                        <span>Voice_Comm:</span>
+                        <a href="tel:+919965470187">+91 99654 70187</a>
+                    </div>
+
+                    <!-- Glowing Icons specifically for LinkedIn and Github -->
+                    <div class="contact-icon-row" style="margin-top: 1.5rem; padding-top: 1.5rem; border-top: 1px solid rgba(255, 255, 255, 0.1);">
+                        <a href="https://www.linkedin.com/in/rahul-s-699162291/" target="_blank" class="contact-icon-link" style="border-color: rgba(188, 19, 254, 0.4);">
+                            <i class="fa-brands fa-linkedin" style="color: var(--neon-purple);"></i>
+                            <span style="color: #fff;">LINKEDIN</span>
+                        </a>
+                        <a href="https://github.com/srahul04" target="_blank" class="contact-icon-link" style="border-color: rgba(188, 19, 254, 0.4);">
+                            <i class="fa-brands fa-github" style="color: var(--neon-purple);"></i>
+                            <span style="color: #fff;">GITHUB</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer>
+            <div class="footer-logo">RAHUL_S // SYS_VER_2026.3</div>
+            <div class="footer-social">
+                <a href="https://www.linkedin.com/in/rahul-s-699162291/" target="_blank"><i class="fa-brands fa-linkedin"></i> linkedin</a>
+                <a href="https://github.com/srahul04" target="_blank"><i class="fa-brands fa-github"></i> github</a>
+            </div>
+        </footer>
+
+    </div> 
+
+    <!-- Script Import Maps -->
+    <script type="importmap">
+        {
+            "imports": {
+                "three": "https://unpkg.com/three@0.158.0/build/three.module.js",
+                "three/addons/": "https://unpkg.com/three@0.158.0/examples/jsm/"
+            }
+        }
+    </script>
+
+    <script type="module">
+        import * as THREE from 'three';
+        
+        // --- 1. UI, LOADER, SCROLL, AND SLIDESHOW LOGIC ---
+        let currentScrollY = 0;
+
+        document.addEventListener('DOMContentLoaded', () => {
+            // Scroll Progress Bar Logic & Global Scroll Tracking for 3D Camera integration
+            const scrollBar = document.getElementById('scroll-progress');
+            window.addEventListener('scroll', () => {
+                currentScrollY = window.scrollY;
+                const totalScroll = document.documentElement.scrollTop;
+                const windowHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+                const scrollPercentage = Math.min((totalScroll / windowHeight) * 100, 100);
+                scrollBar.style.width = scrollPercentage + '%';
+            });
+            
+            // Initialization Loading
+            let progress = 0;
+            const bar = document.getElementById('loader-bar');
+            
+            const interval = setInterval(() => {
+                progress += Math.floor(Math.random() * 20);
+                if(progress > 100) progress = 100;
+                bar.style.width = progress + '%';
+                
+                if(progress === 100) {
+                    clearInterval(interval);
+                    setTimeout(() => {
+                        const loader = document.getElementById('loader');
+                        loader.style.opacity = '0';
+                        setTimeout(() => loader.style.display = 'none', 1000);
+                        reveal();
+                    }, 500);
+                }
+            }, 100); 
+
+            // Scroll Reveal implementation
+            function reveal() {
+                var reveals = document.querySelectorAll('.reveal');
+                for (var i = 0; i < reveals.length; i++) {
+                    var windowHeight = window.innerHeight;
+                    var elementTop = reveals[i].getBoundingClientRect().top;
+                    var elementVisible = 100;
+                    if (elementTop < windowHeight - elementVisible) {
+                        reveals[i].classList.add('active');
+                    }
+                }
+            }
+            window.addEventListener('scroll', reveal);
+            
+            // Navbar layout change on scroll
+            const nav = document.getElementById('navbar');
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 50) {
+                    nav.style.background = 'rgba(3, 3, 5, 0.9)';
+                    nav.style.padding = '1rem 5%';
+                } else {
+                    nav.style.background = 'rgba(3, 3, 5, 0.6)';
+                    nav.style.padding = '1.5rem 5%';
+                }
+            });
+
+            // Slideshow Logic for Taiwan folder images
+            let slideIndex = 0;
+            const slides = document.querySelectorAll('.taiwan-slide');
+            if(slides.length > 0) {
+                // Increased speed: 1500ms intervals
+                setInterval(() => {
+                    slides[slideIndex].classList.remove('active');
+                    slideIndex++;
+                    if (slideIndex >= slides.length) { slideIndex = 0; }
+                    slides[slideIndex].classList.add('active');
+                }, 1500); 
+            }
+        });
+
+        // --- 2. THREE.JS HEAVILY IMMERSIVE & IMPRESSIVE CYBER PLEXUS ---
+        // (Highly colorful, dense, heavily reactive to scroll input)
+        const container = document.getElementById('canvas-container');
+        const scene = new THREE.Scene();
+        scene.fog = new THREE.FogExp2(0x030305, 0.002); // adjusted fog so plexus is clearer
+
+        const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+        camera.position.z = 100;
+        camera.position.y = 20;
+
+        const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+        container.appendChild(renderer.domElement);
+
+        const isMobile = window.innerWidth < 768;
+        // Vastly increased particles for a non-dull, extremely impressive dense web
+        const particleCount = isMobile ? 400 : 800; 
+        const maxDistance = isMobile ? 40 : 35; 
+        
+        let mouseX = 0;
+        let mouseY = 0;
+        let targetX = 0;
+        let targetY = 0;
+        let windowHalfX = window.innerWidth / 2;
+        let windowHalfY = window.innerHeight / 2;
+
+        document.addEventListener('mousemove', (event) => {
+            mouseX = (event.clientX - windowHalfX);
+            mouseY = (event.clientY - windowHalfY);
+        });
+        document.addEventListener('touchmove', (event) => {
+            if(event.touches.length > 0) {
+                mouseX = (event.touches[0].clientX - windowHalfX);
+                mouseY = (event.touches[0].clientY - windowHalfY);
+            }
+        }, {passive: true});
+
+        const particles = new THREE.BufferGeometry();
+        const positions = new Float32Array(particleCount * 3);
+        const colors = new Float32Array(particleCount * 3);
+        const velocities = [];
+
+        // Impressive multi-color Neon Palette 
+        const colorPalette = [
+            new THREE.Color(0x00f3ff), // Cyan
+            new THREE.Color(0xbc13fe), // Purple
+            new THREE.Color(0x00ff66)  // Green
+        ];
+
+        for(let i=0; i < particleCount; i++) {
+            const ix = i * 3;
+            // Larger spread
+            positions[ix] = (Math.random() - 0.5) * 500;     
+            positions[ix+1] = (Math.random() - 0.5) * 500;   
+            positions[ix+2] = (Math.random() - 0.5) * 500;   
+            
+            // Randomly select color from neon palette for each particle
+            const randColor = colorPalette[Math.floor(Math.random() * colorPalette.length)];
+            colors[ix] = randColor.r;
+            colors[ix+1] = randColor.g;
+            colors[ix+2] = randColor.b;
+
+            velocities.push({
+                x: (Math.random() - 0.5) * 0.3,
+                y: (Math.random() - 0.5) * 0.3,
+                z: (Math.random() - 0.5) * 0.3
+            });
+        }
+
+        particles.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+        particles.setAttribute('color', new THREE.BufferAttribute(colors, 3));
+        
+        const pMaterial = new THREE.PointsMaterial({
+            size: isMobile ? 3.5 : 2.5,
+            vertexColors: true, // enables the multi-colored dots
+            transparent: true,
+            opacity: 0.9,
+            blending: THREE.AdditiveBlending
+        });
+        
+        const particleSystem = new THREE.Points(particles, pMaterial);
+        scene.add(particleSystem);
+
+        const linesGeometry = new THREE.BufferGeometry();
+        const linesPositions = new Float32Array(particleCount * particleCount * 3);
+        linesGeometry.setAttribute('position', new THREE.BufferAttribute(linesPositions, 3));
+        
+        const linesMaterial = new THREE.LineBasicMaterial({
+            color: 0x00f3ff, // base line color
+            transparent: true,
+            opacity: 0.25, // higher opacity to be less dull
+            blending: THREE.AdditiveBlending
+        });
+        
+        const linesMesh = new THREE.LineSegments(linesGeometry, linesMaterial);
+        scene.add(linesMesh);
+
+        function animate() {
+            requestAnimationFrame(animate);
+
+            targetX = mouseX * 0.05;
+            targetY = mouseY * 0.05;
+            
+            // BASE ROTATION - Constant slow spin
+            particleSystem.rotation.y += 0.0005;
+            linesMesh.rotation.y += 0.0005;
+
+            // ===== SCROLL DRIVEN IMMERSION LOGIC =====
+            // As user scrolls down, camera physically flies forward through the matrix!
+            const scrollWarpZ = 100 - (currentScrollY * 0.04); 
+            // The entire mesh physically twists and warps around the user as they scroll
+            const scrollTwistZ = currentScrollY * 0.001; 
+
+            // Smooth interpolation towards the scroll-driven targets
+            camera.position.z += (scrollWarpZ - camera.position.z) * 0.05;
+            particleSystem.rotation.z += (scrollTwistZ - particleSystem.rotation.z) * 0.05;
+            linesMesh.rotation.z += (scrollTwistZ - linesMesh.rotation.z) * 0.05;
+            
+            // Standard Mouse Parallax 
+            camera.position.x += (targetX - camera.position.x) * 0.05;
+            camera.position.y += ((-targetY - camera.position.y + 20) * 0.05); 
+            
+            camera.lookAt(scene.position);
+
+            // Velocity logic
+            const positionsArray = particleSystem.geometry.attributes.position.array;
+            
+            for(let i=0; i < particleCount; i++) {
+                const ix = i * 3;
+                const iy = i * 3 + 1;
+                const iz = i * 3 + 2;
+
+                positionsArray[ix] += velocities[i].x;
+                positionsArray[iy] += velocities[i].y;
+                positionsArray[iz] += velocities[i].z;
+
+                if (positionsArray[ix] > 250 || positionsArray[ix] < -250) velocities[i].x *= -1;
+                if (positionsArray[iy] > 250 || positionsArray[iy] < -250) velocities[i].y *= -1;
+                if (positionsArray[iz] > 250 || positionsArray[iz] < -250) velocities[i].z *= -1;
+            }
+            particleSystem.geometry.attributes.position.needsUpdate = true;
+
+            // Recalculate Plexus connections
+            let vertexIndex = 0;
+            let currentLineCount = 0;
+
+            for(let i=0; i < particleCount; i++) {
+                const px1 = positionsArray[i*3];
+                const py1 = positionsArray[i*3+1];
+                const pz1 = positionsArray[i*3+2];
+
+                for(let j=i+1; j < particleCount; j++) {
+                    const px2 = positionsArray[j*3];
+                    const py2 = positionsArray[j*3+1];
+                    const pz2 = positionsArray[j*3+2];
+
+                    const dx = px1 - px2;
+                    const dy = py1 - py2;
+                    const dz = pz1 - pz2;
+                    const distSq = dx*dx + dy*dy + dz*dz;
+
+                    if(distSq < (maxDistance * maxDistance)) {
+                        linesPositions[vertexIndex++] = px1;
+                        linesPositions[vertexIndex++] = py1;
+                        linesPositions[vertexIndex++] = pz1;
+
+                        linesPositions[vertexIndex++] = px2;
+                        linesPositions[vertexIndex++] = py2;
+                        linesPositions[vertexIndex++] = pz2;
+
+                        currentLineCount++;
+                    }
+                }
+            }
+            linesGeometry.attributes.position.needsUpdate = true;
+            linesGeometry.setDrawRange(0, currentLineCount * 2);
+
+            renderer.render(scene, camera);
+        }
+        
+        animate();
+
+        window.addEventListener('resize', () => {
+            windowHalfX = window.innerWidth / 2;
+            windowHalfY = window.innerHeight / 2;
+            camera.aspect = window.innerWidth / window.innerHeight;
+            camera.updateProjectionMatrix();
+            renderer.setSize(window.innerWidth, window.innerHeight);
+        });
+
+    </script>
+</body>
+</html>
