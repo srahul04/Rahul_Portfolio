@@ -1,56 +1,133 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rahul S | Software Developer & Cybersecurity Researcher</title>
     <meta name="description" content="Portfolio of Rahul S — Computer Science Engineer, Software Developer, and Cybersecurity Researcher building practical, scalable, and secure technology.">
-    <meta name="theme-color" content="#0a0a0f">
+    <meta name="theme-color" content="#0b0f19">
+    <link rel="icon" type="image/png" href="cyber_icon.png">
     <meta property="og:title" content="Rahul S | Software Developer & Cybersecurity Researcher">
     <meta property="og:description" content="Computer Science Engineer specializing in software engineering, cybersecurity, mobile development, and AI research.">
 
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:opsz,wght@6..96,400;6..96,500;6..96,700;6..96,800&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Google Fonts: Syne (Futuristic Display Headings), Plus Jakarta Sans & Fira Code -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Syne:wght@500;600;700;800&display=swap" rel="stylesheet">
     <!-- FontAwesome for Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <style>
-        /* === BREACH ALERT VARIABLES (High-Stakes Simulation) === */
+        /* === 3D CYBER THEME SYSTEM (Adaptive Light & Dark Modes) === */
         :root {
-            --bg:           #0D0D0D;
-            --bg-card:      #1A1A1A;
-            --bg-card-hover:#242424;
-            --border:       rgba(255, 61, 0, 0.18);
-            --border-hover: rgba(255, 61, 0, 0.6);
+            /* Theme Base Colors - Deep Royal Navy & Indigo Cyber Theme */
+            --bg:            #070a14;
+            --bg-secondary:  #0d1326;
+            --bg-card:       rgba(13, 19, 38, 0.75);
+            --bg-card-hover: rgba(20, 30, 58, 0.85);
+            --bg-nav:        rgba(7, 10, 20, 0.85);
+            --border:        rgba(79, 70, 229, 0.25);
+            --border-hover:  rgba(124, 58, 237, 0.6);
 
-            --cyan:         #FF3D00; /* Hazard Orange */
-            --cyan-light:   #ff6633;
-            --cyan-dark:    #b32b00;
-            --green:        #FF1744; /* Threat Red */
+            /* Dynamic Cyber Colors (Deep Royal Indigo, Electric Blue & Violet Accents) */
+            --cyan:          #38bdf8;
+            --cyan-light:    #60a5fa;
+            --cyan-dark:     #0284c7;
 
-            --indigo:       #FF3D00; /* Fallback mapping for existing classes */
-            --violet:       #FF3D00; /* Fallback mapping for existing classes */
-            --emerald:      #FF1744; /* Fallback mapping for existing classes */
-            
-            --gold:         #FF3D00; /* Overwrite previous theme mapping */
-            --gold-light:   #ff6633;
-            --gold-dark:    #b32b00;
-            --gold-accent:  #FF1744;
+            --violet:        #8b5cf6;
+            --violet-light:  #a78bfa;
+            --violet-dark:   #6d28d9;
 
-            --text-primary: #FFFFFF;
-            --text-secondary:#B0BEC5;
-            --text-muted:   #78909C;
+            --emerald:       #06b6d4;
+            --emerald-light: #22d3ee;
+            --emerald-dark:  #0891b2;
 
-            --font-heading: 'Bodoni Moda', serif;
-            --font-subheading:'Space Grotesk', sans-serif;
-            --font-body:    'Space Grotesk', sans-serif;
+            --indigo:        #6366f1;
+            --indigo-light:  #818cf8;
+            --green:         #10b981;
 
-            --shadow-card:  0 8px 30px rgba(0, 0, 0, 0.6);
-            --shadow-cyan:  0 0 25px rgba(255, 61, 0, 0.25);
+            --gold:          #6366f1;
+            --gold-light:    #38bdf8;
+            --gold-dark:     #4338ca;
+            --gold-accent:   #a78bfa;
 
-            --radius:       8px;
-            --radius-sm:    4px;
+            --text-primary:  #f8fafc;
+            --text-secondary:#94a3b8;
+            --text-muted:    #64748b;
+
+            /* Premium Cyber Typography */
+            --font-heading:   'Syne', sans-serif;
+            --font-subheading:'Plus Jakarta Sans', sans-serif;
+            --font-body:      'Plus Jakarta Sans', sans-serif;
+            --font-code:      'Fira Code', monospace;
+
+            /* 3D Glassmorphism & Depth Shadows */
+            --shadow-card:   0 20px 45px -15px rgba(0, 0, 0, 0.6), 0 0 20px rgba(99, 102, 241, 0.1);
+            --shadow-cyan:   0 10px 30px -5px rgba(56, 189, 248, 0.35);
+            --shadow-violet: 0 10px 30px -5px rgba(139, 92, 246, 0.35);
+            --shadow-3d:     0 25px 50px -12px rgba(0, 0, 0, 0.7), inset 0 1px 1px rgba(255, 255, 255, 0.12);
+
+            --radius:        14px;
+            --radius-sm:     8px;
+        }
+
+        /* Light Theme Overrides (Fully Polished, Crisp Contrast & Cyber Light Elegance) */
+        [data-theme="light"] {
+            --bg:            #f8fafc;
+            --bg-secondary:  #ffffff;
+            --bg-card:       #ffffff;
+            --bg-card-hover: #f1f5f9;
+            --bg-nav:        rgba(255, 255, 255, 0.9);
+            --border:        rgba(99, 102, 241, 0.22);
+            --border-hover:  rgba(99, 102, 241, 0.6);
+
+            --cyan:          #0284c7;
+            --cyan-light:    #0369a1;
+            --cyan-dark:     #0c4a6e;
+
+            --violet:        #6d28d9;
+            --violet-light:  #7c3aed;
+            --violet-dark:   #5b21b6;
+
+            --emerald:       #0f766e;
+            --emerald-light: #0d9488;
+            --emerald-dark:  #115e59;
+
+            --indigo:        #4338ca;
+            --indigo-light:  #4f46e5;
+            --green:         #047857;
+
+            --gold:          #4338ca;
+            --gold-light:    #0284c7;
+            --gold-dark:     #3730a3;
+            --gold-accent:   #6d28d9;
+
+            --text-primary:  #0f172a;
+            --text-secondary:#334155;
+            --text-muted:    #475569;
+
+            --shadow-card:   0 10px 30px -5px rgba(0, 0, 0, 0.08), 0 0 15px rgba(99, 102, 241, 0.06);
+            --shadow-cyan:   0 10px 25px -5px rgba(2, 132, 199, 0.25);
+            --shadow-violet: 0 10px 25px -5px rgba(109, 40, 217, 0.25);
+            --shadow-3d:     0 20px 40px -10px rgba(0, 0, 0, 0.12);
+        }
+
+        [data-theme="light"] .card {
+            background: #ffffff !important;
+            border-color: rgba(99, 102, 241, 0.25) !important;
+            box-shadow: 0 8px 30px rgba(15, 23, 42, 0.08) !important;
+        }
+        [data-theme="light"] .card:hover {
+            background: #f8fafc !important;
+            border-color: var(--indigo-light) !important;
+            box-shadow: 0 15px 35px rgba(99, 102, 241, 0.15) !important;
+        }
+        [data-theme="light"] .content-section {
+            background: rgba(248, 250, 252, 0.85);
+        }
+        [data-theme="light"] .hero-portrait-overlay {
+            background: linear-gradient(180deg, transparent 60%, rgba(248, 250, 252, 0.9) 100%);
         }
 
         /* === RESET & BASE === */
@@ -111,47 +188,75 @@
             font-family: var(--font-heading);
         }
 
-        /* === BACKGROUND === */
+        /* === BACKGROUND & AMBIENT NEON GLOW === */
         #canvas-container {
             position: fixed; inset: 0;
             z-index: -2; pointer-events: auto;
+            transition: opacity 0.5s ease;
         }
         .bg-noise {
             position: fixed; inset: 0; z-index: -1;
             background-image:
-                radial-gradient(ellipse 80% 60% at 20% 10%, rgba(255, 61, 0, 0.04) 0%, transparent 60%),
-                radial-gradient(ellipse 60% 80% at 80% 90%, rgba(255, 23, 68, 0.02) 0%, transparent 60%);
+                radial-gradient(ellipse 70% 50% at 15% 15%, rgba(0, 242, 254, 0.08) 0%, transparent 60%),
+                radial-gradient(ellipse 60% 60% at 85% 85%, rgba(121, 40, 202, 0.08) 0%, transparent 60%),
+                radial-gradient(ellipse 50% 50% at 50% 50%, rgba(0, 245, 212, 0.04) 0%, transparent 60%);
             pointer-events: none;
+            transition: all 0.5s ease;
+        }
+        [data-theme="light"] .bg-noise {
+            background-image:
+                radial-gradient(ellipse 70% 50% at 15% 15%, rgba(2, 132, 199, 0.08) 0%, transparent 60%),
+                radial-gradient(ellipse 60% 60% at 85% 85%, rgba(124, 58, 237, 0.06) 0%, transparent 60%),
+                radial-gradient(ellipse 50% 50% at 50% 50%, rgba(13, 148, 136, 0.05) 0%, transparent 60%);
         }
 
-        /* === NAVIGATION === */
+        /* === NAVIGATION & BRAND LOGO === */
         #navbar {
             display: flex; justify-content: space-between; align-items: center;
-            padding: 1.25rem 5%;
-            background: rgba(13, 13, 13, 0.7);
-            backdrop-filter: blur(16px);
+            padding: 1.1rem 5%;
+            background: var(--bg-nav);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
             border-bottom: 1px solid var(--border);
             position: fixed; width: 100%; top: 0; z-index: 100;
-            transition: all 0.3s ease;
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+        .nav-logo-group {
+            display: flex; align-items: center; gap: 0.75rem;
+            text-decoration: none;
+        }
+        .nav-logo-icon {
+            width: 38px; height: 38px;
+            object-fit: contain;
+            filter: drop-shadow(0 0 8px rgba(0, 242, 254, 0.5));
+            transition: transform 0.4s ease, filter 0.4s ease;
+        }
+        .nav-logo-group:hover .nav-logo-icon {
+            transform: rotate(10deg) scale(1.08);
+            filter: drop-shadow(0 0 14px rgba(121, 40, 202, 0.8));
         }
         .nav-logo {
             font-family: var(--font-heading);
-            font-size: 1.2rem;
+            font-size: 1.25rem;
             font-weight: 800;
             color: var(--text-primary);
-            text-decoration: none;
             letter-spacing: 0.5px;
         }
-        .nav-logo span { color: var(--indigo); }
-        .nav-links { display: flex; align-items: center; gap: 0.25rem; }
+        .nav-logo span { 
+            background: linear-gradient(135deg, var(--cyan), var(--violet-light));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .nav-links { display: flex; align-items: center; gap: 0.35rem; }
         .nav-links a {
             color: var(--text-secondary);
             text-decoration: none;
-            padding: 0.4rem 0.75rem;
+            padding: 0.45rem 0.85rem;
             font-size: 0.875rem;
-            font-weight: 500;
+            font-weight: 600;
             border-radius: var(--radius-sm);
-            transition: color 0.2s, background 0.2s;
+            transition: all 0.25s ease;
             opacity: 0;
             animation: navFadeIn 0.5s ease forwards;
         }
@@ -160,6 +265,87 @@
         .nav-links a:nth-child(3){animation-delay:0.15s}
         .nav-links a:nth-child(4){animation-delay:0.2s}
         .nav-links a:nth-child(5){animation-delay:0.25s}
+        .nav-links a:nth-child(6){animation-delay:0.3s}
+        @keyframes navFadeIn {
+            from { opacity:0; transform:translateY(-8px); }
+            to   { opacity:1; transform:translateY(0); }
+        }
+        .nav-links a:hover { color: var(--cyan); background: rgba(0, 242, 254, 0.08); }
+        .nav-links a.btn-resume {
+            border: 1px solid var(--cyan);
+            color: var(--cyan) !important;
+            background: rgba(0, 242, 254, 0.08);
+            box-shadow: 0 0 15px rgba(0, 242, 254, 0.15);
+            font-weight: 700;
+            padding: 0.45rem 1rem;
+            margin-left: 0.5rem;
+            animation: pulseCyan 3s infinite alternate;
+        }
+        .nav-links a.btn-resume:hover { 
+            border-color: var(--cyan-light);
+            color: #000 !important;
+            background: linear-gradient(135deg, var(--cyan), var(--emerald));
+            box-shadow: 0 0 25px rgba(0, 242, 254, 0.5);
+            transform: translateY(-2px);
+        }
+        @keyframes pulseCyan {
+            0% { box-shadow: 0 0 10px rgba(0, 242, 254, 0.15); }
+            100% { box-shadow: 0 0 20px rgba(121, 40, 202, 0.35); }
+        }
+
+        /* Dynamic Theme Switcher Button */
+        .theme-toggle-btn {
+            background: rgba(0, 242, 254, 0.1);
+            border: 1px solid var(--border);
+            color: var(--cyan);
+            width: 40px; height: 40px;
+            border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            cursor: pointer;
+            font-size: 1.1rem;
+            margin-left: 0.75rem;
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            box-shadow: 0 0 10px rgba(0, 242, 254, 0.1);
+        }
+        .theme-toggle-btn:hover {
+            transform: scale(1.15) rotate(15deg);
+            background: rgba(0, 242, 254, 0.2);
+            border-color: var(--cyan);
+            box-shadow: 0 0 20px rgba(0, 242, 254, 0.4);
+        }
+
+        /* 3D Glassmorphism Cards & Dynamic Tilt Effects */
+        .card {
+            background: var(--bg-card);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 2rem;
+            transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1), 
+                        box-shadow 0.4s cubic-bezier(0.165, 0.84, 0.44, 1), 
+                        border-color 0.3s ease, 
+                        background 0.3s ease;
+            box-shadow: var(--shadow-card);
+            transform-style: preserve-3d;
+            perspective: 1000px;
+            position: relative;
+            overflow: hidden;
+        }
+        .card::before {
+            content: ''; position: absolute; inset: 0;
+            background: linear-gradient(135deg, rgba(255,255,255,0.08) 0%, transparent 60%);
+            pointer-events: none;
+            opacity: 0.5;
+            transition: opacity 0.3s;
+        }
+        .card:hover {
+            transform: translateY(-8px) scale(1.01) rotateX(2deg) rotateY(-1deg);
+            border-color: var(--border-hover);
+            box-shadow: var(--shadow-3d), 0 0 25px rgba(0, 242, 254, 0.15);
+            background: var(--bg-card-hover);
+        }
+        .card:hover::before { opacity: 1; }
         .nav-links a:nth-child(6){animation-delay:0.3s}
         @keyframes navFadeIn {
             from { opacity:0; transform:translateY(-8px); }
@@ -231,20 +417,67 @@
 
         /* === HERO === */
         #hero {
-            display: flex; align-items: center;
+            display: flex; align-items: center; justify-content: space-between;
             min-height: 100vh;
-            padding-top: 5rem;
+            padding: 6rem 5% 3rem;
             background: transparent;
             pointer-events: none;
         }
+        .hero-container {
+            display: flex; align-items: center; justify-content: space-between;
+            gap: 4rem; width: 100%; max-width: 1200px; margin: 0 auto;
+        }
         .hero-inner {
-            max-width: 680px;
+            flex: 1; max-width: 650px;
             pointer-events: auto;
+        }
+        .hero-portrait-wrapper {
+            flex: 0 0 380px;
+            position: relative;
+            pointer-events: auto;
+            display: flex; justify-content: center; align-items: center;
+        }
+        .hero-portrait-card {
+            width: 100%; max-width: 360px; height: 440px;
+            border-radius: 30px 100px 30px 30px;
+            overflow: hidden;
+            position: relative;
+            border: 2px solid var(--border);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.7), 0 0 30px rgba(99, 102, 241, 0.25);
+            transition: transform 0.5s cubic-bezier(0.165, 0.84, 0.44, 1), box-shadow 0.5s ease;
+        }
+        .hero-portrait-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.8), 0 0 45px rgba(139, 92, 246, 0.4);
+            border-color: var(--violet-light);
+        }
+        .hero-portrait-img {
+            width: 100%; height: 100%;
+            object-fit: cover; object-position: center;
+            filter: contrast(1.05) brightness(0.95);
+            transition: transform 0.6s ease, filter 0.6s ease;
+        }
+        .hero-portrait-card:hover .hero-portrait-img {
+            transform: scale(1.05);
+            filter: contrast(1.1) brightness(1.05);
+        }
+        .hero-portrait-overlay {
+            position: absolute; inset: 0;
+            background: linear-gradient(180deg, transparent 50%, rgba(7, 10, 20, 0.85) 100%);
+            pointer-events: none;
+        }
+        @media (max-width: 992px) {
+            #hero { padding-top: 7rem; }
+            .hero-container { flex-direction: column-reverse; gap: 2.5rem; text-align: center; }
+            .hero-inner { max-width: 100%; }
+            .hero-portrait-wrapper { flex: 0 0 auto; width: 280px; }
+            .hero-portrait-card { height: 340px; border-radius: 24px 70px 24px 24px; }
+            .hero-cta-group { justify-content: center; }
         }
         .hero-badge {
             display: inline-flex; align-items: center; gap: 0.5rem;
-            background: rgba(255, 61, 0, 0.1);
-            border: 1px solid rgba(255, 61, 0, 0.25);
+            background: rgba(99, 102, 241, 0.12);
+            border: 1px solid rgba(99, 102, 241, 0.3);
             color: var(--cyan);
             font-size: 0.78rem; font-weight: 600;
             letter-spacing: 2px; text-transform: uppercase;
@@ -265,16 +498,20 @@
         }
         .hero-name {
             font-family: var(--font-heading);
-            font-size: clamp(3rem, 8vw, 5.5rem);
+            font-size: clamp(3rem, 7vw, 5rem);
             font-weight: 800; line-height: 1.05;
             color: var(--text-primary);
             margin-bottom: 1rem;
             animation: fadeUp 0.7s 0.2s ease both;
         }
-        .hero-name span { color: var(--indigo); }
+        .hero-name span {
+            background: linear-gradient(135deg, var(--indigo-light), var(--cyan));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
         .hero-subtitle {
-            font-size: 1.15rem; font-weight: 500;
-            color: var(--text-secondary);
+            font-size: 1.15rem; font-weight: 600;
+            color: var(--indigo-light);
             margin-bottom: 1.5rem;
             animation: fadeUp 0.7s 0.3s ease both;
         }
@@ -352,20 +589,83 @@
         .stat-num.emerald{ color: var(--emerald); }
         .stat-label { font-size: 0.85rem; color: var(--text-muted); font-weight: 500; }
 
-        /* Timeline */
-        .timeline { padding-left: 1.5rem; border-left: 2px solid var(--border); margin-left: 0.5rem; }
-        .timeline-item { margin-bottom: 2rem; position: relative; }
-        .timeline-item::before {
-            content: ''; position: absolute;
-            left: -2.1rem; top: 0.35rem;
-            width: 10px; height: 10px;
-            background: var(--indigo); border-radius: 50%;
-            box-shadow: 0 0 0 3px rgba(99,102,241,0.2);
+        /* === 3D ZIG-ZAG ACADEMIC FLOW LAYOUT & FLOATING 3D ARROWS === */
+        .academic-flow {
+            display: flex;
+            flex-direction: column;
+            gap: 2.5rem;
+            position: relative;
+            margin: 2.5rem 0;
         }
-        .timeline-date { font-size: 0.8rem; color: var(--text-muted); font-weight: 500; margin-bottom: 0.35rem; text-transform: uppercase; letter-spacing: 1px; }
-        .timeline-title { font-family: var(--font-heading); font-size: 1.1rem; color: var(--text-primary); margin-bottom: 0.25rem; }
-        .timeline-org   { font-size: 0.9rem; color: var(--text-secondary); font-weight: 500; }
-        .timeline-meta  { font-size: 0.85rem; color: var(--emerald); margin-top: 0.35rem; font-weight: 500; }
+        .academic-flow-item {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+            position: relative;
+            width: 100%;
+        }
+        .academic-flow-item:nth-child(even) {
+            flex-direction: row-reverse;
+        }
+        .academic-card-box {
+            flex: 1;
+            max-width: 540px;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 1.75rem;
+            position: relative;
+            box-shadow: var(--shadow-card);
+            backdrop-filter: blur(16px);
+            transition: all 0.4s ease;
+        }
+        .academic-card-box:hover {
+            transform: translateY(-6px) scale(1.01);
+            border-color: var(--indigo-light);
+            box-shadow: 0 15px 35px rgba(99, 102, 241, 0.25);
+        }
+        .academic-arrow-connector {
+            flex: 0 0 80px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+        .arrow-3d-floating {
+            width: 50px; height: 50px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--indigo-light), var(--violet-light));
+            color: #ffffff;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 1.2rem;
+            box-shadow: 0 10px 25px rgba(99, 102, 241, 0.4), inset 0 2px 2px rgba(255,255,255,0.4);
+            animation: floatArrow 3s ease-in-out infinite;
+            border: 2px solid rgba(255,255,255,0.2);
+        }
+        @keyframes floatArrow {
+            0%, 100% { transform: translateY(0) scale(1) rotate(0deg); }
+            50% { transform: translateY(-8px) scale(1.08) rotate(5deg); }
+        }
+        .academic-flow-item:nth-child(even) .arrow-3d-floating i {
+            transform: rotate(180deg);
+        }
+        .dotted-connector-line {
+            position: absolute;
+            width: 100%;
+            border-top: 2px dashed var(--border-hover);
+            z-index: -1;
+            top: 50%;
+        }
+        @media (max-width: 768px) {
+            .academic-flow-item, .academic-flow-item:nth-child(even) {
+                flex-direction: column;
+                text-align: center;
+            }
+            .academic-card-box { max-width: 100%; }
+            .academic-arrow-connector { flex: 0 0 auto; margin: 0.5rem 0; }
+            .academic-flow-item:nth-child(even) .arrow-3d-floating i { transform: rotate(90deg); }
+            .arrow-3d-floating i { transform: rotate(90deg); }
+        }
 
         /* Global Exposure */
         .global-badge {
@@ -672,7 +972,10 @@
 
     <!-- Navigation -->
     <nav id="navbar">
-        <a href="#hero" class="nav-logo">Rahul <span style="color:var(--gold)">S</span></a>
+        <a href="#hero" class="nav-logo-group">
+            <img src="cyber_icon.png" alt="Cyber Shield Icon" class="nav-logo-icon">
+            <div class="nav-logo">Rahul <span>S</span></div>
+        </a>
         <div class="nav-links">
             <a href="#about">About</a>
             <a href="#skills">Skills</a>
@@ -681,24 +984,36 @@
             <a href="#publications">Research</a>
             <a href="#references">References</a>
             <a href="Rahul_Sangaramahalingam_CV.pdf" target="_blank" class="btn-resume"><i class="fa-solid fa-download"></i> Download CV</a>
+            <button id="theme-toggle" class="theme-toggle-btn" aria-label="Toggle Theme">
+                <i class="fa-solid fa-moon"></i>
+            </button>
         </div>
         <a href="#contact" class="nav-cta">Contact</a>
     </nav>
 
     <!-- Hero Section -->
     <section id="hero">
-        <div class="hero-inner">
-            <div class="hero-badge">Available for Opportunities</div>
-            <h1 class="hero-name">Rahul <span>S</span></h1>
-            <p class="hero-subtitle">Computer Science Engineer &nbsp;·&nbsp; Software Developer &nbsp;·&nbsp; Cybersecurity Researcher</p>
-            <p class="hero-desc">
-                I enjoy building software that is practical, scalable, and secure. My interests span software engineering,
-                cybersecurity, mobile application development, artificial intelligence, and research — with a focus on
-                creating technology that solves real-world problems.
-            </p>
-            <div class="hero-cta-group">
-                <a href="#projects" class="btn btn-primary"><i class="fa-solid fa-code"></i> View Projects</a>
-                <a href="#contact" class="btn btn-outline"><i class="fa-regular fa-envelope"></i> Get in Touch</a>
+        <div class="hero-container">
+            <div class="hero-inner">
+                <div class="hero-badge">Available for Opportunities</div>
+                <h1 class="hero-name">Rahul <span>S</span></h1>
+                <p class="hero-subtitle">Computer Science Engineer &nbsp;·&nbsp; Software Developer &nbsp;·&nbsp; Cybersecurity Researcher</p>
+                <p class="hero-desc">
+                    I enjoy building software that is practical, scalable, and secure. My interests span software engineering,
+                    cybersecurity, mobile application development, artificial intelligence, and research — with a focus on
+                    creating technology that solves real-world problems.
+                </p>
+                <div class="hero-cta-group">
+                    <a href="#projects" class="btn btn-primary"><i class="fa-solid fa-code"></i> View Projects</a>
+                    <a href="#contact" class="btn btn-outline"><i class="fa-regular fa-envelope"></i> Get in Touch</a>
+                </div>
+            </div>
+
+            <div class="hero-portrait-wrapper">
+                <div class="hero-portrait-card">
+                    <img src="user_portrait.jpg" alt="Rahul S Cyber Developer Portrait" class="hero-portrait-img">
+                    <div class="hero-portrait-overlay"></div>
+                </div>
             </div>
         </div>
     </section>
@@ -775,25 +1090,48 @@
             <div class="section-eyebrow">Education</div>
             <h3 class="section-title" style="font-size:2rem; margin-bottom:2rem;">Academic Background</h3>
 
-            <div class="timeline reveal">
-                <div class="timeline-item">
-                    <div class="timeline-date">Sep 2022 - May 2026</div>
-                    <div class="timeline-title">B.Tech Computer Science &amp; Engineering</div>
-                    <div class="timeline-org">Kalasalingam Academy of Research and Education</div>
-                    <div class="timeline-meta">CGPA: 8.29 / 10.00</div>
+            <div class="academic-flow reveal">
+                <!-- Item 1: B.Tech -->
+                <div class="academic-flow-item">
+                    <div class="academic-card-box">
+                        <div class="timeline-date">Sep 2022 - May 2026</div>
+                        <h4 class="timeline-title">B.Tech Computer Science &amp; Engineering</h4>
+                        <div class="timeline-org">Kalasalingam Academy of Research and Education</div>
+                        <div class="timeline-meta">CGPA: 8.29 / 10.00</div>
+                    </div>
+                    <div class="academic-arrow-connector">
+                        <div class="dotted-connector-line"></div>
+                        <div class="arrow-3d-floating" title="Next Milestone"><i class="fa-solid fa-arrow-right"></i></div>
+                    </div>
                 </div>
-                <div class="timeline-item">
-                    <div class="timeline-date">Sep 2024 - Jan 2025</div>
-                    <div class="timeline-title">Bachelor's degree, Computer Science (Exchange)</div>
-                    <div class="timeline-org">National Chung Cheng University</div>
-                    <div class="timeline-meta">Grade: 87%</div>
-                    <p style="font-size:0.85rem; color:var(--text-secondary); margin-top:0.35rem;">Spent 4 months studying abroad, focusing on cross-cultural collaboration and advanced technical research methodologies.</p>
+
+                <!-- Item 2: Taiwan Exchange -->
+                <div class="academic-flow-item">
+                    <div class="academic-card-box" style="border-left: 3px solid var(--violet);">
+                        <div class="timeline-date">Sep 2024 - Jan 2025</div>
+                        <h4 class="timeline-title">Bachelor's degree, Computer Science (Exchange)</h4>
+                        <div class="timeline-org">National Chung Cheng University, Taiwan</div>
+                        <div class="timeline-meta" style="color:var(--violet-light)">Grade: 87.0%</div>
+                        <p style="font-size:0.85rem; color:var(--text-secondary); margin-top:0.35rem;">4-month semester study abroad focusing on advanced technical research &amp; international security methods.</p>
+                    </div>
+                    <div class="academic-arrow-connector">
+                        <div class="dotted-connector-line"></div>
+                        <div class="arrow-3d-floating" title="Next Milestone" style="background: linear-gradient(135deg, var(--violet-light), var(--cyan));"><i class="fa-solid fa-arrow-right"></i></div>
+                    </div>
                 </div>
-                <div class="timeline-item">
-                    <div class="timeline-date">2021 - 2022</div>
-                    <div class="timeline-title">XII Grade</div>
-                    <div class="timeline-org">Minerva Public School, India</div>
-                    <div class="timeline-meta">72%</div>
+
+                <!-- Item 3: XII Grade -->
+                <div class="academic-flow-item">
+                    <div class="academic-card-box">
+                        <div class="timeline-date">2021 - 2022</div>
+                        <h4 class="timeline-title">XII Grade (Higher Secondary)</h4>
+                        <div class="timeline-org">Minerva Public School, India</div>
+                        <div class="timeline-meta">72%</div>
+                    </div>
+                    <div class="academic-arrow-connector">
+                        <div class="dotted-connector-line"></div>
+                        <div class="arrow-3d-floating" style="background: linear-gradient(135deg, var(--cyan), var(--indigo-light));"><i class="fa-solid fa-check"></i></div>
+                    </div>
                 </div>
             </div>
         </section>
@@ -899,7 +1237,7 @@
                 </div>
 
                 <!-- Languages Spoken -->
-                <div class="card" style="border-top: 3px solid var(--gold-light); grid-column: 1 / -1;">
+                <div class="card" style="border-top: 3px solid var(--gold-light); grid-column: 1 / -1; margin-top: 2rem;">
                     <h4 style="font-family:var(--font-subheading); font-size:1.05rem; font-weight:700; color:var(--gold-light); margin-bottom:1rem; display:flex; align-items:center; gap:0.5rem;">
                         <i class="fa-solid fa-language"></i> Languages Spoken &amp; Proficiency
                     </h4>
@@ -991,7 +1329,7 @@
                             <span class="tag">Supabase</span>
                         </div>
                         <div class="project-links">
-                            <a href="#" class="project-link-btn"><i class="fa-brands fa-github"></i> View Code</a>
+                            <a href="https://github.com/srahul04" target="_blank" class="project-link-btn"><i class="fa-brands fa-github"></i> View Code</a>
                         </div>
                     </div>
                 </div>
@@ -1005,8 +1343,8 @@
                     <div class="pcard-header">
                         <div class="pcard-name violet">CineCurator</div>
                         <div class="pcard-icons">
-                            <a href="#" class="pcard-icon" title="GitHub"><i class="fa-brands fa-github"></i></a>
-                            <a href="#" class="pcard-icon" title="Live"><i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                            <a href="https://github.com/srahul04" target="_blank" class="pcard-icon" title="GitHub"><i class="fa-brands fa-github"></i></a>
+                            <a href="https://github.com/srahul04" target="_blank" class="pcard-icon" title="Live"><i class="fa-solid fa-arrow-up-right-from-square"></i></a>
                         </div>
                     </div>
                     <p class="pcard-desc">Mobile-first cinematic discovery app integrating Trakt and YouTube APIs — built for real-time movie insights with production-ready UX and smooth navigation.</p>
@@ -1023,8 +1361,8 @@
                     <div class="pcard-header">
                         <div class="pcard-name">Quantum-Resistant IAM</div>
                         <div class="pcard-icons">
-                            <a href="#" class="pcard-icon" title="GitHub"><i class="fa-brands fa-github"></i></a>
-                            <a href="#" class="pcard-icon" title="Live"><i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                            <a href="https://github.com/srahul04" target="_blank" class="pcard-icon" title="GitHub"><i class="fa-brands fa-github"></i></a>
+                            <a href="https://github.com/srahul04" target="_blank" class="pcard-icon" title="Live"><i class="fa-solid fa-arrow-up-right-from-square"></i></a>
                         </div>
                     </div>
                     <p class="pcard-desc">Post-quantum cryptography based IAM system integrating RBAC, MFA, and session management for enterprise security. Published at IEEE.</p>
@@ -1041,8 +1379,8 @@
                     <div class="pcard-header">
                         <div class="pcard-name emerald">SecuBrowse</div>
                         <div class="pcard-icons">
-                            <a href="#" class="pcard-icon" title="GitHub"><i class="fa-brands fa-github"></i></a>
-                            <a href="#" class="pcard-icon" title="Live"><i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                            <a href="https://github.com/srahul04" target="_blank" class="pcard-icon" title="GitHub"><i class="fa-brands fa-github"></i></a>
+                            <a href="https://github.com/srahul04" target="_blank" class="pcard-icon" title="Live"><i class="fa-solid fa-arrow-up-right-from-square"></i></a>
                         </div>
                     </div>
                     <p class="pcard-desc">Chrome-based web security analyzer leveraging AI and threat intelligence to detect phishing, malicious websites, and insecure web practices in real-time.</p>
@@ -1059,8 +1397,8 @@
                     <div class="pcard-header">
                         <div class="pcard-name violet">IoT Security Analyzer</div>
                         <div class="pcard-icons">
-                            <a href="#" class="pcard-icon" title="GitHub"><i class="fa-brands fa-github"></i></a>
-                            <a href="#" class="pcard-icon" title="Live"><i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                            <a href="https://github.com/srahul04" target="_blank" class="pcard-icon" title="GitHub"><i class="fa-brands fa-github"></i></a>
+                            <a href="https://github.com/srahul04" target="_blank" class="pcard-icon" title="Live"><i class="fa-solid fa-arrow-up-right-from-square"></i></a>
                         </div>
                     </div>
                     <p class="pcard-desc">Python-based IoT security assessment tool with network discovery, CVE-based vulnerability checks, and automated HTML/PDF/JSON reporting. Top 10 at Hackhustle'25.</p>
@@ -1077,8 +1415,8 @@
                     <div class="pcard-header">
                         <div class="pcard-name">Deleted File Recovery</div>
                         <div class="pcard-icons">
-                            <a href="#" class="pcard-icon" title="GitHub"><i class="fa-brands fa-github"></i></a>
-                            <a href="#" class="pcard-icon" title="Live"><i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                            <a href="https://github.com/srahul04" target="_blank" class="pcard-icon" title="GitHub"><i class="fa-brands fa-github"></i></a>
+                            <a href="https://github.com/srahul04" target="_blank" class="pcard-icon" title="Live"><i class="fa-solid fa-arrow-up-right-from-square"></i></a>
                         </div>
                     </div>
                     <p class="pcard-desc">Digital forensics application for recovering deleted files using file carving, metadata analysis, and machine learning-based fragment classification.</p>
@@ -1094,8 +1432,8 @@
                     <div class="pcard-header">
                         <div class="pcard-name emerald">Secure File Management</div>
                         <div class="pcard-icons">
-                            <a href="#" class="pcard-icon" title="GitHub"><i class="fa-brands fa-github"></i></a>
-                            <a href="#" class="pcard-icon" title="Live"><i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                            <a href="https://github.com/srahul04" target="_blank" class="pcard-icon" title="GitHub"><i class="fa-brands fa-github"></i></a>
+                            <a href="https://github.com/srahul04" target="_blank" class="pcard-icon" title="Live"><i class="fa-solid fa-arrow-up-right-from-square"></i></a>
                         </div>
                     </div>
                     <p class="pcard-desc">Web-based file platform with secure authentication, granular access control, and role-based permissions. Built at National Chung Cheng University, Taiwan.</p>
@@ -1284,12 +1622,46 @@
             }
             window.addEventListener('scroll', reveal);
 
+            // Theme Engine (Light / Dark Mode Switcher)
+            const themeToggleBtn = document.getElementById('theme-toggle');
+            const themeIcon = themeToggleBtn.querySelector('i');
+            
+            // Check system preference or saved theme
+            const savedTheme = localStorage.getItem('theme');
+            const systemPrefersLight = window.matchMedia('(prefers-color-scheme: light)').matches;
+            const initialTheme = savedTheme || (systemPrefersLight ? 'light' : 'dark');
+            
+            function setTheme(theme) {
+                document.documentElement.setAttribute('data-theme', theme);
+                localStorage.setItem('theme', theme);
+                if (theme === 'light') {
+                    themeIcon.className = 'fa-solid fa-sun';
+                    themeToggleBtn.setAttribute('title', 'Switch to Dark Cyber Mode');
+                } else {
+                    themeIcon.className = 'fa-solid fa-moon';
+                    themeToggleBtn.setAttribute('title', 'Switch to Light Cyber Mode');
+                }
+            }
+            
+            setTheme(initialTheme);
+
+            themeToggleBtn.addEventListener('click', () => {
+                const currentTheme = document.documentElement.getAttribute('data-theme');
+                const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+                setTheme(newTheme);
+            });
+
             // Navbar scroll style
             const nav = document.getElementById('navbar');
             window.addEventListener('scroll', () => {
-                nav.style.background = window.scrollY > 50
-                    ? 'rgba(13, 13, 13, 0.95)'
-                    : 'rgba(13, 13, 13, 0.7)';
+                const isLight = document.documentElement.getAttribute('data-theme') === 'light';
+                if (window.scrollY > 50) {
+                    nav.style.background = isLight ? 'rgba(241, 245, 249, 0.95)' : 'rgba(10, 14, 23, 0.95)';
+                    nav.style.boxShadow = '0 10px 30px rgba(0,0,0,0.15)';
+                } else {
+                    nav.style.background = isLight ? 'rgba(241, 245, 249, 0.85)' : 'rgba(10, 14, 23, 0.8)';
+                    nav.style.boxShadow = '0 4px 20px rgba(0,0,0,0.1)';
+                }
             });
 
             // Taiwan Slideshow
@@ -1304,10 +1676,10 @@
             }
         });
 
-        // --- 2. THREE.JS SUBTLE PARTICLE FIELD ---
+        // --- 2. THREE.JS MULTI-ACCENT CYBER PARTICLE FIELD ---
         const container = document.getElementById('canvas-container');
         const scene = new THREE.Scene();
-        scene.fog = new THREE.FogExp2(0x0d0d0d, 0.003);
+        scene.fog = new THREE.FogExp2(0x0a0e17, 0.0025);
 
         const camera = new THREE.PerspectiveCamera(70, window.innerWidth / window.innerHeight, 0.1, 1000);
         camera.position.z = 90;
@@ -1319,8 +1691,8 @@
         container.appendChild(renderer.domElement);
 
         const isMobile = window.innerWidth < 768;
-        const particleCount = isMobile ? 300 : 600;
-        const maxDistance = isMobile ? 38 : 32;
+        const particleCount = isMobile ? 350 : 700;
+        const maxDistance = isMobile ? 38 : 34;
 
         let mouseX = 0, mouseY = 0, targetX = 0, targetY = 0;
         let windowHalfX = window.innerWidth / 2;
@@ -1342,11 +1714,12 @@
         const colors = new Float32Array(particleCount * 3);
         const velocities = [];
 
-        // Breach Alert palette
+        // Multi-accent deep royal navy & indigo cyber palette
         const colorPalette = [
-            new THREE.Color(0xff3d00), // Hazard Orange
-            new THREE.Color(0xff1744), // Threat Red
-            new THREE.Color(0xff6633), // light hazard orange
+            new THREE.Color(0x6366f1), // Royal Indigo
+            new THREE.Color(0x8b5cf6), // Electric Violet
+            new THREE.Color(0x38bdf8), // Sky Cyber Blue
+            new THREE.Color(0x06b6d4), // Cyan Accent
         ];
 
         for (let i = 0; i < particleCount; i++) {
@@ -1361,9 +1734,9 @@
             colors[ix+2] = c.b;
 
             velocities.push({
-                x: (Math.random() - 0.5) * 0.2,
-                y: (Math.random() - 0.5) * 0.2,
-                z: (Math.random() - 0.5) * 0.2,
+                x: (Math.random() - 0.5) * 0.18,
+                y: (Math.random() - 0.5) * 0.18,
+                z: (Math.random() - 0.5) * 0.18,
             });
         }
 
@@ -1374,7 +1747,7 @@
             size: isMobile ? 2.5 : 1.8,
             vertexColors: true,
             transparent: true,
-            opacity: 0.55,
+            opacity: 0.65,
             blending: THREE.AdditiveBlending,
         });
 
@@ -1386,9 +1759,9 @@
         linesGeometry.setAttribute('position', new THREE.BufferAttribute(linesPositions, 3));
 
         const linesMaterial = new THREE.LineBasicMaterial({
-            color: 0xff3d00,
+            color: 0x6366f1,
             transparent: true,
-            opacity: 0.12,
+            opacity: 0.15,
             blending: THREE.AdditiveBlending,
         });
 
