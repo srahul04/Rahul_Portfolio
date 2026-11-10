@@ -19,58 +19,67 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <style>
-        /* === 3D CYBER THEME SYSTEM (Adaptive Light & Dark Modes) === */
+        /* === AMOLED BLACK, LUXE BURGUNDY & PURE WHITE GLASS SYSTEM === */
         :root {
-            /* Theme Base Colors - Deep Royal Navy & Indigo Cyber Theme */
-            --bg:            #070a14;
-            --bg-secondary:  #0d1326;
-            --bg-card:       rgba(13, 19, 38, 0.75);
-            --bg-card-hover: rgba(20, 30, 58, 0.85);
-            --bg-nav:        rgba(7, 10, 20, 0.85);
-            --border:        rgba(79, 70, 229, 0.25);
-            --border-hover:  rgba(124, 58, 237, 0.6);
+            /* Pure AMOLED Pitch-Black Background & Dark Wine/Burgundy Accents */
+            --bg:            #000000;
+            --bg-secondary:  #080407;
+            --bg-card:       rgba(18, 6, 12, 0.68);
+            --bg-card-hover: rgba(32, 10, 20, 0.85);
+            --bg-nav:        rgba(0, 0, 0, 0.88);
+            --border:        rgba(159, 18, 57, 0.32);
+            --border-hover:  rgba(244, 63, 94, 0.65);
 
-            /* Dynamic Cyber Colors (Deep Royal Indigo, Electric Blue & Violet Accents) */
-            --cyan:          #38bdf8;
-            --cyan-light:    #60a5fa;
-            --cyan-dark:     #0284c7;
+            /* Luxe Burgundy, Ruby, Crimson & Clean Tech Rose */
+            --burgundy:       #881337;
+            --burgundy-dark:  #4c0519;
+            --burgundy-light: #9f1239;
+            --rose:           #e11d48;
+            --rose-light:     #fb7185;
+            --wine:           #be123c;
 
-            --violet:        #8b5cf6;
-            --violet-light:  #a78bfa;
-            --violet-dark:   #6d28d9;
+            /* Accent Highlights seamlessly tuned to Burgundy & AMOLED Black */
+            --cyan:          #fb7185;
+            --cyan-light:    #fda4af;
+            --cyan-dark:     #be123c;
 
-            --emerald:       #06b6d4;
-            --emerald-light: #22d3ee;
-            --emerald-dark:  #0891b2;
+            --violet:        #f43f5e;
+            --violet-light:  #fda4af;
+            --violet-dark:   #9f1239;
 
-            --indigo:        #6366f1;
-            --indigo-light:  #818cf8;
+            --emerald:       #f43f5e;
+            --emerald-light: #fb7185;
+            --emerald-dark:  #be123c;
+
+            --indigo:        #e11d48;
+            --indigo-light:  #fb7185;
             --green:         #10b981;
 
-            --gold:          #6366f1;
-            --gold-light:    #38bdf8;
-            --gold-dark:     #4338ca;
-            --gold-accent:   #a78bfa;
+            --gold:          #e11d48;
+            --gold-light:    #fda4af;
+            --gold-dark:     #9f1239;
+            --gold-accent:   #fb7185;
 
-            --text-primary:  #f8fafc;
-            --text-secondary:#94a3b8;
-            --text-muted:    #64748b;
+            /* Crisp High-Contrast Pure White & Silver Hierarchy */
+            --text-primary:  #ffffff;
+            --text-secondary:#cbd5e1;
+            --text-muted:    #8892b0;
 
-            /* Premium Cyber Typography */
+            /* Premium Modernist Typography */
             --font-heading:   'Space Grotesk', -apple-system, BlinkMacSystemFont, sans-serif;
             --font-subheading:'Plus Jakarta Sans', sans-serif;
             --font-body:      'Plus Jakarta Sans', sans-serif;
             --font-code:      'JetBrains Mono', monospace;
 
-            /* 3D Glassmorphism & Depth Shadows */
-            --shadow-card:   0 20px 45px -15px rgba(0, 0, 0, 0.6), 0 0 20px rgba(99, 102, 241, 0.1);
-            --shadow-cyan:   0 10px 30px -5px rgba(56, 189, 248, 0.35);
-            --shadow-violet: 0 10px 30px -5px rgba(139, 92, 246, 0.35);
-            --shadow-3d:     0 25px 50px -12px rgba(0, 0, 0, 0.7), inset 0 1px 1px rgba(255, 255, 255, 0.12);
-            --glass-bg:      rgba(13, 19, 38, 0.65);
-            --glass-border:  rgba(255, 255, 255, 0.08);
-            --glass-blur:    blur(16px);
-            --glass-specular: inset 0 1px 0 rgba(255, 255, 255, 0.15);
+            /* 3D Glassmorphism & Burgundy Aura Shadows */
+            --shadow-card:   0 20px 45px -15px rgba(0, 0, 0, 0.95), 0 0 25px rgba(159, 18, 57, 0.18);
+            --shadow-cyan:   0 10px 30px -5px rgba(225, 29, 72, 0.35);
+            --shadow-violet: 0 10px 30px -5px rgba(159, 18, 57, 0.35);
+            --shadow-3d:     0 25px 50px -12px rgba(0, 0, 0, 0.95), inset 0 1px 1px rgba(255, 255, 255, 0.18);
+            --glass-bg:      rgba(18, 6, 12, 0.65);
+            --glass-border:  rgba(255, 255, 255, 0.1);
+            --glass-blur:    blur(20px);
+            --glass-specular: inset 0 1px 0 rgba(255, 255, 255, 0.22);
 
             --radius:        14px;
             --radius-sm:     8px;
@@ -1546,11 +1555,11 @@
     <section id="hero">
         <div class="hero-container">
             <div class="hero-inner">
-                <div class="hero-badge"><i class="fa-solid fa-bolt" style="color:var(--cyan); margin-right:6px;"></i> Available for Internships &amp; Collaborations</div>
+                <div class="hero-badge"><i class="fa-solid fa-bolt" style="color:var(--rose-light); margin-right:6px;"></i> Available for Internships &amp; Collaborations</div>
                 <h1 class="hero-name">Rahul (桑臨安) <span>Sangaramahalingam</span></h1>
                 <p class="hero-subtitle">M.S. Student at NSYSU &nbsp;·&nbsp; B.Tech CSE (Completed) &nbsp;·&nbsp; Cybersecurity Researcher &amp; Developer</p>
                 <p class="hero-desc">
-                    M.S. student in Computer Science and Engineering at NSYSU with a completed B.Tech in CSE and four peer-reviewed research papers. Passionate about engineering practical security tools, attack detection mechanisms, IoT defense, and AI-powered mobile platforms.
+                    I'm Rahul Sangaramahalingam, a curious developer and cybersecurity researcher pursuing an M.S. at NSYSU with a completed B.Tech in CSE. I enjoy understanding how things work, solving complex problems, and creating software that is both useful and secure.
                 </p>
                 <div class="hero-cta-group">
                     <a href="#projects" class="btn btn-primary"><i class="fa-solid fa-code"></i> View Projects</a>
@@ -1572,16 +1581,16 @@
 
         <!-- About Section -->
         <section id="about">
-            <div class="section-eyebrow">01 / About</div>
+            <div class="section-eyebrow">About</div>
             <h2 class="section-title">About Me</h2>
 
             <div class="grid-2">
                 <div class="about-text card reveal">
                     <p>
-                        I am Rahul (桑臨安) Sangaramahalingam, a first-year M.S. student in Computer Science and Engineering at National Sun Yat-sen University (NSYSU), Taiwan, with a completed B.Tech in CSE (8.29 CGPA) and four peer-reviewed research papers in cryptography, authentication, and digital forensics.
+                        I'm Rahul Sangaramahalingam, a curious developer who enjoys understanding how things work, solving problems, and building things that make a difference. I have a particular interest in cybersecurity and software development, where I find the challenge of creating technology that is both useful and secure especially rewarding.
                     </p>
                     <p>
-                        My work focuses on building practical security tools - from IoT vulnerability scanners and real-time phishing detection engines to ML-driven file forensics. I am currently pursuing thesis research in network security and attack detection, open to impactful research collaborations and technical internships.
+                        I believe in learning by doing, questioning what I know, and constantly pushing myself to explore beyond my comfort zone. For me, technology is not just about writing code; it's about curiosity, creativity, and turning ideas into something meaningful.
                     </p>
                 </div>
 
@@ -1692,7 +1701,7 @@
 
         <!-- Skills Section -->
         <section id="skills">
-            <div class="section-eyebrow">02 / Skills</div>
+            <div class="section-eyebrow">Skills</div>
             <h2 class="section-title">Technical Skills</h2>
             <p class="section-subtitle">Categorized breakdown of technical competencies, security tooling, and core focus areas.</p>
 
@@ -1788,7 +1797,7 @@
 
         <!-- Certifications Section -->
         <section id="certifications">
-            <div class="section-eyebrow">03 / Certifications</div>
+            <div class="section-eyebrow">Certifications</div>
             <h2 class="section-title">Verified Credentials</h2>
             <p class="section-subtitle">Industry and academic certifications in cybersecurity and software infrastructure.</p>
 
@@ -1819,7 +1828,7 @@
 
         <!-- Projects Section -->
         <section id="projects">
-            <div class="section-eyebrow">04 / Projects</div>
+            <div class="section-eyebrow">Projects</div>
             <h2 class="section-title">Research Projects</h2>
             <p class="section-subtitle">Empirical investigation, security proofs, and software prototypes designed to evaluate and mitigate emerging cyber threats.</p>
 
@@ -1842,7 +1851,7 @@
                         </div>
                         <div class="project-links">
                             <a href="https://github.com/srahul04" target="_blank" class="project-link-btn"><i class="fa-brands fa-github"></i> View Repository</a>
-                            <span class="award-tag-inline"><i class="fa-solid fa-award"></i> Top 10 Nationwide</span>
+                            <span class="award-tag-inline"><i class="fa-solid fa-award"></i> University Hackathon Top 10</span>
                         </div>
                     </div>
                 </div>
@@ -1850,6 +1859,42 @@
 
             <!-- Remaining Projects - Symmetric Grid prioritizing Cyber & Defense -->
             <div class="projects-grid reveal">
+
+                <!-- Website Authenticator -->
+                <div class="pcard">
+                    <div class="pcard-header">
+                        <div class="pcard-name">Website Authenticator</div>
+                        <div class="pcard-icons">
+                            <a href="https://ieeexplore.ieee.org/document/11011563" target="_blank" class="pcard-icon" title="IEEE Publication"><i class="fa-solid fa-lock"></i></a>
+                            <a href="https://github.com/srahul04" target="_blank" class="pcard-icon" title="GitHub"><i class="fa-brands fa-github"></i></a>
+                        </div>
+                    </div>
+                    <p class="pcard-desc">Centralized authentication mechanism using Time-Based One-Time Passwords (TOTP) refreshing every 30 seconds to help users verify website legitimacy and eliminate phishing login risks.</p>
+                    <div class="pcard-tags">
+                        <span class="pcard-tag">Authentication Security</span>
+                        <span class="pcard-tag">Phishing Prevention</span>
+                        <span class="pcard-tag">TOTP</span>
+                        <span class="pcard-tag">IEEE 2025</span>
+                    </div>
+                </div>
+
+                <!-- Anti-Remote Disk Imaging System -->
+                <div class="pcard">
+                    <div class="pcard-header">
+                        <div class="pcard-name emerald">Anti-Remote Disk Imaging</div>
+                        <div class="pcard-icons">
+                            <a href="https://ieeexplore.ieee.org/document/11011811" target="_blank" class="pcard-icon" title="IEEE Publication"><i class="fa-solid fa-shield-halved"></i></a>
+                            <a href="https://github.com/srahul04" target="_blank" class="pcard-icon" title="GitHub"><i class="fa-brands fa-github"></i></a>
+                        </div>
+                    </div>
+                    <p class="pcard-desc">Endpoint security system preventing unauthorized remote disk-imaging via real-time process monitoring, dynamic firewall rule enforcement, and full-disk encryption controls. Achieved 92% effectiveness and ~3s response time.</p>
+                    <div class="pcard-tags">
+                        <span class="pcard-tag">Digital Forensics</span>
+                        <span class="pcard-tag">Endpoint Security</span>
+                        <span class="pcard-tag">Process Monitor</span>
+                        <span class="pcard-tag">IEEE 2025</span>
+                    </div>
+                </div>
 
                 <!-- 1. SecuBrowse -->
                 <div class="pcard">
@@ -1960,7 +2005,7 @@
 
         <!-- Publications Section -->
         <section id="publications">
-            <div class="section-eyebrow">05 / Research</div>
+            <div class="section-eyebrow">Research</div>
             <h2 class="section-title">Research Publications</h2>
             <p class="section-subtitle">Published research across IEEE and Springer conferences in cybersecurity, cryptography, and forensics.</p>
 
@@ -2038,7 +2083,7 @@
 
         <!-- ===== WHEREABOUTS SECTION ===== -->
         <section id="whereabouts" style="padding-top:5rem;">
-            <div class="section-eyebrow">07 / Whereabouts</div>
+            <div class="section-eyebrow">Whereabouts</div>
             <h2 class="section-title">Currently Pursuing</h2>
             <p class="section-subtitle">My current academic whereabouts - an exciting new chapter in research and advanced computing.</p>
 
@@ -2106,7 +2151,7 @@
 
         <!-- References Section -->
         <section id="references">
-            <div class="section-eyebrow">08 / References</div>
+            <div class="section-eyebrow">References</div>
             <h2 class="section-title">Academic References</h2>
             <p class="section-subtitle">Faculty members and research supervisors from Kalasalingam Academy of Research and Education.</p>
 
@@ -2142,7 +2187,7 @@
         <!-- Contact Section -->
         <section id="contact">
             <div class="contact-wrapper reveal">
-                <div class="section-eyebrow" style="justify-content:center;">09 / Contact</div>
+                <div class="section-eyebrow" style="justify-content:center;">Contact</div>
                 <h2 class="section-title" style="text-align:center; margin-bottom:0.5rem;">Let's Connect</h2>
                 <p style="color:var(--text-secondary); text-align:center; margin-bottom:2.5rem; max-width:400px;">
                     Open to new opportunities, research collaborations, and interesting conversations.
